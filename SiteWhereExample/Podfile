@@ -1,0 +1,3 @@
+platform :ios, '8.0'
+pod 'SiteWhereSDK', :path => '../'
+pod 'MBProgressHUD', '~> 0.9.1'
