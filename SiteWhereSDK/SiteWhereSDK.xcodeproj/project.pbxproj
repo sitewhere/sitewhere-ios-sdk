@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A31BD9391C06382700582848 /* SiteWhereSDK.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A31BD9381C06382700582848 /* SiteWhereSDK.h */; };
-		A31BD93B1C06382700582848 /* SiteWhereSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = A31BD93A1C06382700582848 /* SiteWhereSDK.m */; };
+		A31BD9431C063BD600582848 /* Sitewhere.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A31BD9421C063BD600582848 /* Sitewhere.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A31BD9461C063CDE00582848 /* SiteWhereMessageClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A31BD9451C063CDE00582848 /* SiteWhereMessageClient.m */; };
+		A31BD94A1C0646F600582848 /* DeviceUID.m in Sources */ = {isa = PBXBuildFile; fileRef = A31BD9491C0646F600582848 /* DeviceUID.m */; };
+		C6349CBE414093BC34ACD126 /* libPods-SiteWhereSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B040918442830ADBB3ABFE9 /* libPods-SiteWhereSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,9 +28,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00E6B3689D2371DFE46ED106 /* Pods-SiteWhereSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiteWhereSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-SiteWhereSDK/Pods-SiteWhereSDK.release.xcconfig"; sourceTree = "<group>"; };
+		7597798E6D102095145327F0 /* Pods-SiteWhereSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiteWhereSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SiteWhereSDK/Pods-SiteWhereSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		7B040918442830ADBB3ABFE9 /* libPods-SiteWhereSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SiteWhereSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31BD9351C06382700582848 /* libSiteWhereSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSiteWhereSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A31BD9381C06382700582848 /* SiteWhereSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SiteWhereSDK.h; sourceTree = "<group>"; };
-		A31BD93A1C06382700582848 /* SiteWhereSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SiteWhereSDK.m; sourceTree = "<group>"; };
+		A31BD9411C063BD600582848 /* Sitewhere.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sitewhere.pbobjc.h; sourceTree = "<group>"; };
+		A31BD9421C063BD600582848 /* Sitewhere.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sitewhere.pbobjc.m; sourceTree = "<group>"; };
+		A31BD9441C063CDE00582848 /* SiteWhereMessageClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteWhereMessageClient.h; sourceTree = "<group>"; };
+		A31BD9451C063CDE00582848 /* SiteWhereMessageClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteWhereMessageClient.m; sourceTree = "<group>"; };
+		A31BD9471C0642FA00582848 /* SiteWhereMessageClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SiteWhereMessageClientDelegate.h; sourceTree = "<group>"; };
+		A31BD9481C0646F600582848 /* DeviceUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceUID.h; sourceTree = "<group>"; };
+		A31BD9491C0646F600582848 /* DeviceUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceUID.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6349CBE414093BC34ACD126 /* libPods-SiteWhereSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		342FA50AD5C422B83781167A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B040918442830ADBB3ABFE9 /* libPods-SiteWhereSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A31BD92C1C06382700582848 = {
 			isa = PBXGroup;
 			children = (
 				A31BD9371C06382700582848 /* SiteWhereSDK */,
 				A31BD9361C06382700582848 /* Products */,
+				B5165C4AA2E2AA3DED8D489A /* Pods */,
+				342FA50AD5C422B83781167A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,10 +83,25 @@
 		A31BD9371C06382700582848 /* SiteWhereSDK */ = {
 			isa = PBXGroup;
 			children = (
+				A31BD9411C063BD600582848 /* Sitewhere.pbobjc.h */,
+				A31BD9421C063BD600582848 /* Sitewhere.pbobjc.m */,
 				A31BD9381C06382700582848 /* SiteWhereSDK.h */,
-				A31BD93A1C06382700582848 /* SiteWhereSDK.m */,
+				A31BD9441C063CDE00582848 /* SiteWhereMessageClient.h */,
+				A31BD9451C063CDE00582848 /* SiteWhereMessageClient.m */,
+				A31BD9471C0642FA00582848 /* SiteWhereMessageClientDelegate.h */,
+				A31BD9481C0646F600582848 /* DeviceUID.h */,
+				A31BD9491C0646F600582848 /* DeviceUID.m */,
 			);
 			path = SiteWhereSDK;
+			sourceTree = "<group>";
+		};
+		B5165C4AA2E2AA3DED8D489A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7597798E6D102095145327F0 /* Pods-SiteWhereSDK.debug.xcconfig */,
+				00E6B3689D2371DFE46ED106 /* Pods-SiteWhereSDK.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -73,9 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A31BD93E1C06382700582848 /* Build configuration list for PBXNativeTarget "SiteWhereSDK" */;
 			buildPhases = (
+				1D67FA690DF7138C81B63FB2 /* Check Pods Manifest.lock */,
 				A31BD9311C06382700582848 /* Sources */,
 				A31BD9321C06382700582848 /* Frameworks */,
 				A31BD9331C06382700582848 /* CopyFiles */,
+				C37468C0A2254F9B7E9B0704 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -117,12 +157,47 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D67FA690DF7138C81B63FB2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C37468C0A2254F9B7E9B0704 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SiteWhereSDK/Pods-SiteWhereSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A31BD9311C06382700582848 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A31BD93B1C06382700582848 /* SiteWhereSDK.m in Sources */,
+				A31BD94A1C0646F600582848 /* DeviceUID.m in Sources */,
+				A31BD9461C063CDE00582848 /* SiteWhereMessageClient.m in Sources */,
+				A31BD9431C063BD600582848 /* Sitewhere.pbobjc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +286,7 @@
 		};
 		A31BD93F1C06382700582848 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7597798E6D102095145327F0 /* Pods-SiteWhereSDK.debug.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -220,6 +296,7 @@
 		};
 		A31BD9401C06382700582848 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00E6B3689D2371DFE46ED106 /* Pods-SiteWhereSDK.release.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -246,6 +323,7 @@
 				A31BD9401C06382700582848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

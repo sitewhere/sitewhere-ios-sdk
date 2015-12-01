@@ -6,8 +6,5 @@
 //  Copyright © 2015 SiteWhere. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface SiteWhereSDK : NSObject
-
-@end
+#import "SiteWhereSDK/SiteWhereMessageClient.h"
+#import "SiteWhereSDK/SiteWhereMessageClientDelegate.h"

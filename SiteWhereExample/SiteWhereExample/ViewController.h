@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SiteWhereSDK/SiteWhereSDK.h>
+#import <CoreLocation/CLLocationManagerDelegate.h>
 
-@interface ViewController : UIViewController
-
+@interface ViewController : UIViewController<SiteWhereMessageClientDelegate,CLLocationManagerDelegate>
 
 @end
 
