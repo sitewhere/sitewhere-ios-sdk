@@ -132,6 +132,16 @@ static NSString* COMMAND_TOPIC_PREFIX = @"SiteWhere/commands/";
     [self sendMessage:SiteWhere_Command_SendDeviceMeasurements message:deviceMeasurements originator:originator label:@"measurements"];
 }
 
+-(void) sendDeviceAlertWithHardwareId:(NSString*)hardwareId type:(NSString*)type message:(NSString*)message specificationToken:(NSString*)specificationToken originator:(NSString*)originator siteToken:(NSString*)siteToken {
+    
+    Model_DeviceAlert* deviceAlert = [[Model_DeviceAlert alloc]init];
+    [deviceAlert setHardwareId:hardwareId];
+    [deviceAlert setAlertType:type];
+    [deviceAlert setAlertMessage:message];
+    
+    [self sendMessage:SiteWhere_Command_SendDeviceAlert message:deviceAlert originator:originator label:@"alert"];
+}
+
 -(void) sendMessage:(SiteWhere_Command) command message:(GPBMessage*) message originator:(NSString*)originator
               label:(NSString*)label {
     

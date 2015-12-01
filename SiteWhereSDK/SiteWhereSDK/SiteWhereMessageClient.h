@@ -22,6 +22,8 @@
 
 -(void)     sendDeviceMeasurmentsWithHardwareId:(NSString*)hardwareId measurements:(NSDictionary*)measurements specificationToken:(NSString*)specificationToken originator:(NSString*)originator siteToken:(NSString*)siteToken;
 
+-(void)     sendDeviceAlertWithHardwareId:(NSString*)hardwareId type:(NSString*)type message:(NSString*)message specificationToken:(NSString*)specificationToken originator:(NSString*)originator siteToken:(NSString*)siteToken;
+
 -(void)     registerForEventsWithTopic:(NSString*)topic;
     
 -(NSString*) getUniqueDeviceId;
