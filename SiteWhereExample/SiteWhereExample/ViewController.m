@@ -15,6 +15,9 @@
 #define SEND_DATA_TO_SITEWHERE_INTERVAL     5    // 5 seconds
 #define ACCELEROMETER_UPDATE_INTERVAL       .01
 
+#define SITEWHERE_MESSAGE_BROKER_HOST       "192.168.86.101"
+#define SITEWHERE_MESSAGE_BROKER_PORT       1883
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
@@ -74,6 +77,9 @@
             [self motionManager:motionManager didUpdateAccelerometerData:accelerometerData];
         });
     }];
+    
+    SiteWhereMessageClient* client = [SiteWhereMessageClient sharedPlatform];
+    [client sendDeviceAlertWithHardwareId:[client getUniqueDeviceId] type:@"accelerometer.started" message:@"Started to read accelerometer data." specificationToken:@"9f2426bd-46de-49d6-833e-385784a9dc1a" originator:nil siteToken:@"bb105f8d-3150-41f5-b9d1-db04965668d3"];
 }
 
 - (void)startSiteWhere {
@@ -81,7 +87,7 @@
     client.delegate = self;
     
     // TODO add NSUserDefaults code.  look at android code. implement connection wizard.
-    [client connectWithHost:@"192.168.86.101" port:1883];
+    [client connectWithHost:@SITEWHERE_MESSAGE_BROKER_HOST port:SITEWHERE_MESSAGE_BROKER_PORT];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Registering device...";
@@ -93,17 +99,22 @@
 -(void) onConnectedToSiteWhere {
     dispatch_async(dispatch_get_main_queue(), ^{
         SiteWhereMessageClient* client = [SiteWhereMessageClient sharedPlatform];
+    
+        // send connected alert to sitewhere
+        [client sendDeviceAlertWithHardwareId:[client getUniqueDeviceId] type:@"sitewhere.connected" message:@"Connected to SiteWhere." specificationToken:@"9f2426bd-46de-49d6-833e-385784a9dc1a" originator:nil siteToken:@"bb105f8d-3150-41f5-b9d1-db04965668d3"];
         
         // register for events for the specified site
         [client registerForEventsWithTopic:@"/bb105f8d-3150-41f5-b9d1-db04965668d3"];
         
         // register device
-        [client sendDeviceRegistrationWithHardwareId:[client getUniqueDeviceId] specificationToken:@"d2604433-e4eb-419b-97c7-88efe9b2cd41" originator:nil siteToken:@"bb105f8d-3150-41f5-b9d1-db04965668d3"];
+        [client sendDeviceRegistrationWithHardwareId:[client getUniqueDeviceId] specificationToken:@"9f2426bd-46de-49d6-833e-385784a9dc1a" originator:nil siteToken:@"bb105f8d-3150-41f5-b9d1-db04965668d3"];
     });
 }
 
 -(void) onDisconnectedFromSiteWhere {
-    
+    // send disconnected alert to sitewhere
+    SiteWhereMessageClient* client = [SiteWhereMessageClient sharedPlatform];
+    [client sendDeviceAlertWithHardwareId:[client getUniqueDeviceId] type:@"sitewhere.disconnected" message:@"Disconnected to SiteWhere." specificationToken:@"9f2426bd-46de-49d6-833e-385784a9dc1a" originator:nil siteToken:@"bb105f8d-3150-41f5-b9d1-db04965668d3"];
 }
 
 -(void) onReceivedDeviceRegistrationCommand:(DeviceRegistrationAckState)state errorMessage:(NSString *)errorMessage {
@@ -156,6 +167,10 @@
 -(void) locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     if (status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorized) {
         [locationManager startUpdatingLocation];
+        
+        SiteWhereMessageClient* client = [SiteWhereMessageClient sharedPlatform];
+        [client sendDeviceAlertWithHardwareId:[client getUniqueDeviceId] type:@"location.started" message:@"Started to read location data." specificationToken:@"9f2426bd-46de-49d6-833e-385784a9dc1a" originator:nil siteToken:@"bb105f8d-3150-41f5-b9d1-db04965668d3"];
+        
     } else if (status == kCLAuthorizationStatusDenied || status == kCLAuthorizationStatusNotDetermined || status == kCLAuthorizationStatusRestricted) {
         
     }
