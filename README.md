@@ -33,3 +33,6 @@ Step 6. Import header file:
 
 # Sample Application
 The sample app can be found in the SiteWhereExample folder. The app demostrates how an iOS device can be an IoT gateway and/or client device for SiteWhere. As an IoT gateway you can register an iOS device with SiteWhere and send location and measurement events. As an IoT client you can register to have events pushed in real-time to an iOS device. Configuring what events get pushed to a specific device is done using server side filters and groovy scripts. The sample app uses the device's current location and accelerometer.
+
+# Discussion
+Join the discussion - https://groups.google.com/forum/#!forum/sitewhere
