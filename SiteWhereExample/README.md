@@ -20,6 +20,7 @@ pod install
 Step 4. Open SiteWhereExample.xcworkspace in XCode
 
 Step 5. Change SiteWhere Server IP:
+
 In ViewController.m change the IP to point to your SiteWhere instance
 ```
 #define SITEWHERE_MESSAGE_BROKER_HOST       "192.168.86.101"
