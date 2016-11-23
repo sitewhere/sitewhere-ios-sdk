@@ -135,14 +135,16 @@ typedef struct Model_Metadata__storage_ {
 @dynamic hasElevation, elevation;
 @dynamic hasEventDate, eventDate;
 @dynamic metadataArray, metadataArray_Count;
+@dynamic hasUpdateState, updateState;
 
 typedef struct Model_DeviceLocation__storage_ {
   uint32_t _has_storage_[1];
+  BOOL updateState;
   NSString *hardwareId;
   NSMutableArray *metadataArray;
-  double latitude;
-  double longitude;
-  double elevation;
+  uint64_t latitude;
+  uint64_t longitude;
+  uint64_t elevation;
   uint64_t eventDate;
 } Model_DeviceLocation__storage_;
 
@@ -168,9 +170,9 @@ typedef struct Model_DeviceLocation__storage_ {
         .number = Model_DeviceLocation_FieldNumber_Latitude,
         .hasIndex = 1,
         .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeDouble,
+        .dataType = GPBDataTypeFixed64,
         .offset = offsetof(Model_DeviceLocation__storage_, latitude),
-        .defaultValue.valueDouble = 0,
+        .defaultValue.valueUInt64 = 0ULL,
         .dataTypeSpecific.className = NULL,
         .fieldOptions = NULL,
       },
@@ -179,9 +181,9 @@ typedef struct Model_DeviceLocation__storage_ {
         .number = Model_DeviceLocation_FieldNumber_Longitude,
         .hasIndex = 2,
         .flags = GPBFieldRequired,
-        .dataType = GPBDataTypeDouble,
+        .dataType = GPBDataTypeFixed64,
         .offset = offsetof(Model_DeviceLocation__storage_, longitude),
-        .defaultValue.valueDouble = 0,
+        .defaultValue.valueUInt64 = 0ULL,
         .dataTypeSpecific.className = NULL,
         .fieldOptions = NULL,
       },
@@ -190,9 +192,9 @@ typedef struct Model_DeviceLocation__storage_ {
         .number = Model_DeviceLocation_FieldNumber_Elevation,
         .hasIndex = 3,
         .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeDouble,
+        .dataType = GPBDataTypeFixed64,
         .offset = offsetof(Model_DeviceLocation__storage_, elevation),
-        .defaultValue.valueDouble = 0,
+        .defaultValue.valueUInt64 = 0ULL,
         .dataTypeSpecific.className = NULL,
         .fieldOptions = NULL,
       },
@@ -218,11 +220,22 @@ typedef struct Model_DeviceLocation__storage_ {
         .dataTypeSpecific.className = GPBStringifySymbol(Model_Metadata),
         .fieldOptions = NULL,
       },
+      {
+        .name = "updateState",
+        .number = Model_DeviceLocation_FieldNumber_UpdateState,
+        .hasIndex = 6,
+        .flags = GPBFieldOptional | GPBFieldTextFormatNameCustom,
+        .dataType = GPBDataTypeBool,
+        .offset = offsetof(Model_DeviceLocation__storage_, updateState),
+        .defaultValue.valueBool = NO,
+        .dataTypeSpecific.className = NULL,
+        .fieldOptions = NULL,
+      },
     };
 #if GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     const char *extraTextFormatInfo = NULL;
 #else
-    static const char *extraTextFormatInfo = "\002\001\n\000\005\t\000";
+    static const char *extraTextFormatInfo = "\003\001\n\000\005\t\000\007\013\000";
 #endif  // GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[Model_DeviceLocation class]
@@ -256,9 +269,11 @@ typedef struct Model_DeviceLocation__storage_ {
 @dynamic hasAlertMessage, alertMessage;
 @dynamic hasEventDate, eventDate;
 @dynamic metadataArray, metadataArray_Count;
+@dynamic hasUpdateState, updateState;
 
 typedef struct Model_DeviceAlert__storage_ {
   uint32_t _has_storage_[1];
+  BOOL updateState;
   NSString *hardwareId;
   NSString *alertType;
   NSString *alertMessage;
@@ -327,11 +342,22 @@ typedef struct Model_DeviceAlert__storage_ {
         .dataTypeSpecific.className = GPBStringifySymbol(Model_Metadata),
         .fieldOptions = NULL,
       },
+      {
+        .name = "updateState",
+        .number = Model_DeviceAlert_FieldNumber_UpdateState,
+        .hasIndex = 5,
+        .flags = GPBFieldOptional | GPBFieldTextFormatNameCustom,
+        .dataType = GPBDataTypeBool,
+        .offset = offsetof(Model_DeviceAlert__storage_, updateState),
+        .defaultValue.valueBool = NO,
+        .dataTypeSpecific.className = NULL,
+        .fieldOptions = NULL,
+      },
     };
 #if GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     const char *extraTextFormatInfo = NULL;
 #else
-    static const char *extraTextFormatInfo = "\004\001\n\000\002\t\000\003\014\000\004\t\000";
+    static const char *extraTextFormatInfo = "\005\001\n\000\002\t\000\003\014\000\004\t\000\006\013\000";
 #endif  // GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[Model_DeviceAlert class]
@@ -366,7 +392,7 @@ typedef struct Model_DeviceAlert__storage_ {
 typedef struct Model_Measurement__storage_ {
   uint32_t _has_storage_[1];
   NSString *measurementId;
-  double measurementValue;
+  uint64_t measurementValue;
 } Model_Measurement__storage_;
 
 // This method is threadsafe because it is initially called
@@ -391,9 +417,9 @@ typedef struct Model_Measurement__storage_ {
         .number = Model_Measurement_FieldNumber_MeasurementValue,
         .hasIndex = 1,
         .flags = GPBFieldRequired | GPBFieldTextFormatNameCustom,
-        .dataType = GPBDataTypeDouble,
+        .dataType = GPBDataTypeFixed64,
         .offset = offsetof(Model_Measurement__storage_, measurementValue),
-        .defaultValue.valueDouble = 0,
+        .defaultValue.valueUInt64 = 0ULL,
         .dataTypeSpecific.className = NULL,
         .fieldOptions = NULL,
       },
@@ -434,9 +460,11 @@ typedef struct Model_Measurement__storage_ {
 @dynamic measurementArray, measurementArray_Count;
 @dynamic hasEventDate, eventDate;
 @dynamic metadataArray, metadataArray_Count;
+@dynamic hasUpdateState, updateState;
 
 typedef struct Model_DeviceMeasurements__storage_ {
   uint32_t _has_storage_[1];
+  BOOL updateState;
   NSString *hardwareId;
   NSMutableArray *measurementArray;
   NSMutableArray *metadataArray;
@@ -493,11 +521,22 @@ typedef struct Model_DeviceMeasurements__storage_ {
         .dataTypeSpecific.className = GPBStringifySymbol(Model_Metadata),
         .fieldOptions = NULL,
       },
+      {
+        .name = "updateState",
+        .number = Model_DeviceMeasurements_FieldNumber_UpdateState,
+        .hasIndex = 4,
+        .flags = GPBFieldOptional | GPBFieldTextFormatNameCustom,
+        .dataType = GPBDataTypeBool,
+        .offset = offsetof(Model_DeviceMeasurements__storage_, updateState),
+        .defaultValue.valueBool = NO,
+        .dataTypeSpecific.className = NULL,
+        .fieldOptions = NULL,
+      },
     };
 #if GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     const char *extraTextFormatInfo = NULL;
 #else
-    static const char *extraTextFormatInfo = "\002\001\n\000\003\t\000";
+    static const char *extraTextFormatInfo = "\003\001\n\000\003\t\000\005\013\000";
 #endif  // GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[Model_DeviceMeasurements class]

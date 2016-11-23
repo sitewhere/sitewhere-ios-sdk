@@ -13,11 +13,12 @@ message Model {
 	// Report device location.
 	message DeviceLocation {
 		required string hardwareId = 1;
-		required double latitude = 2;
-		required double longitude = 3;
-		optional double elevation = 4;
+		required fixed64 latitude = 2;
+		required fixed64 longitude = 3;
+		optional fixed64 elevation = 4;
 		optional fixed64 eventDate = 5;
 		repeated Metadata metadata = 6;
+		optional bool updateState = 7;
 	}
 
 	// Report device alert.
@@ -27,12 +28,13 @@ message Model {
 		required string alertMessage = 3;
 		optional fixed64 eventDate = 4;
 		repeated Metadata metadata = 5;
+		optional bool updateState = 6;
 	}
 	
 	// A single measurement.
 	message Measurement {
 		required string measurementId = 1;
-		required double measurementValue = 2;
+		required fixed64 measurementValue = 2;
 	}
 
 	// Event message for device measurements.
@@ -41,8 +43,9 @@ message Model {
 		repeated Measurement measurement = 2;
 		optional fixed64 eventDate = 3;
 		repeated Metadata metadata = 4;
+		optional bool updateState = 5;
 	}
-	
+
 	// Create a device stream.
 	message DeviceStream {
 		required string hardwareId = 1;
@@ -50,7 +53,7 @@ message Model {
 		required string contentType = 3;
 		repeated Metadata metadata = 4;
 	}
-	
+
 	// A chunk of streaming data.
 	message DeviceStreamData {
 		required string hardwareId = 1;
@@ -66,16 +69,16 @@ message Model {
 message SiteWhere {
 
 	enum Command {
-		SEND_REGISTRATION = 1; 
-		SEND_ACKNOWLEDGEMENT = 2; 
-		SEND_DEVICE_LOCATION = 3; 
-		SEND_DEVICE_ALERT = 4; 
+		SEND_REGISTRATION = 1;
+		SEND_ACKNOWLEDGEMENT = 2;
+		SEND_DEVICE_LOCATION = 3;
+		SEND_DEVICE_ALERT = 4;
 		SEND_DEVICE_MEASUREMENTS = 5;
 		SEND_DEVICE_STREAM = 6;
 		SEND_DEVICE_STREAM_DATA = 7;
 		REQUEST_DEVICE_STREAM_DATA = 8;
 	}
-	
+
 	// Header contains the command and originator.
 	message Header {
 		required Command command = 1;
@@ -95,7 +98,7 @@ message SiteWhere {
 		required string hardwareId = 1;
 		optional string message = 2;
 	}
-	
+
 	// Request for a chunk of data from a device stream.
 	message DeviceStreamDataRequest {
 		required string hardwareId = 1;
@@ -108,10 +111,10 @@ message SiteWhere {
 message Device {
 
 	enum Command {
-		ACK_REGISTRATION = 1; 
+		ACK_REGISTRATION = 1;
 		ACK_DEVICE_STREAM = 2;
 		RECEIVE_DEVICE_STREAM_DATA = 3;
-	} 
+	}
 	
 	// Header contains the command and originator.
 	message Header {
@@ -123,7 +126,7 @@ message Device {
 
 	// Enumeration of registation state responses.
 	enum RegistrationAckState {NEW_REGISTRATION = 1; ALREADY_REGISTERED = 2; REGISTRATION_ERROR = 3;} 
-	enum RegistrationAckError {INVALID_SPECIFICATION = 1; SITE_TOKEN_REQUIRED = 2; NEW_DEVICES_NOT_ALLOWED = 3;} 
+	enum RegistrationAckError {INVALID_SPECIFICATION = 1; SITE_TOKEN_REQUIRED = 2; NEW_DEVICES_NOT_ALLOWED = 3;}
 
 	// Acknowledges registration.
 	message RegistrationAck {
@@ -131,10 +134,10 @@ message Device {
 		optional RegistrationAckError errorType = 2;
 		optional string errorMessage = 3;
 	}
-	
+
 	// Enumeration of device stream creation responses.
-	enum DeviceStreamAckState {STREAM_CREATED = 1; STREAM_EXISTS = 2; STREAM_FAILED = 3;} 
-	
+	enum DeviceStreamAckState {STREAM_CREATED = 1; STREAM_EXISTS = 2; STREAM_FAILED = 3;}
+
 	// Acknowledges creation of device stream.
 	message DeviceStreamAck {
 		required string streamId = 1;

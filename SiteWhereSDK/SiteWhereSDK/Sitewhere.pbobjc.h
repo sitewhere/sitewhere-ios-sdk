@@ -125,6 +125,7 @@ typedef GPB_ENUM(Model_DeviceLocation_FieldNumber) {
   Model_DeviceLocation_FieldNumber_Elevation = 4,
   Model_DeviceLocation_FieldNumber_EventDate = 5,
   Model_DeviceLocation_FieldNumber_MetadataArray = 6,
+  Model_DeviceLocation_FieldNumber_UpdateState = 7,
 };
 
 // Report device location.
@@ -134,13 +135,13 @@ typedef GPB_ENUM(Model_DeviceLocation_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *hardwareId;
 
 @property(nonatomic, readwrite) BOOL hasLatitude;
-@property(nonatomic, readwrite) double latitude;
+@property(nonatomic, readwrite) uint64_t latitude;
 
 @property(nonatomic, readwrite) BOOL hasLongitude;
-@property(nonatomic, readwrite) double longitude;
+@property(nonatomic, readwrite) uint64_t longitude;
 
 @property(nonatomic, readwrite) BOOL hasElevation;
-@property(nonatomic, readwrite) double elevation;
+@property(nonatomic, readwrite) uint64_t elevation;
 
 @property(nonatomic, readwrite) BOOL hasEventDate;
 @property(nonatomic, readwrite) uint64_t eventDate;
@@ -148,6 +149,9 @@ typedef GPB_ENUM(Model_DeviceLocation_FieldNumber) {
 // |metadataArray| contains |Model_Metadata|
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray *metadataArray;
 @property(nonatomic, readonly) NSUInteger metadataArray_Count;
+
+@property(nonatomic, readwrite) BOOL hasUpdateState;
+@property(nonatomic, readwrite) BOOL updateState;
 
 @end
 
@@ -159,6 +163,7 @@ typedef GPB_ENUM(Model_DeviceAlert_FieldNumber) {
   Model_DeviceAlert_FieldNumber_AlertMessage = 3,
   Model_DeviceAlert_FieldNumber_EventDate = 4,
   Model_DeviceAlert_FieldNumber_MetadataArray = 5,
+  Model_DeviceAlert_FieldNumber_UpdateState = 6,
 };
 
 // Report device alert.
@@ -180,6 +185,9 @@ typedef GPB_ENUM(Model_DeviceAlert_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray *metadataArray;
 @property(nonatomic, readonly) NSUInteger metadataArray_Count;
 
+@property(nonatomic, readwrite) BOOL hasUpdateState;
+@property(nonatomic, readwrite) BOOL updateState;
+
 @end
 
 #pragma mark - Model_Measurement
@@ -196,7 +204,7 @@ typedef GPB_ENUM(Model_Measurement_FieldNumber) {
 @property(nonatomic, readwrite, copy, null_resettable) NSString *measurementId;
 
 @property(nonatomic, readwrite) BOOL hasMeasurementValue;
-@property(nonatomic, readwrite) double measurementValue;
+@property(nonatomic, readwrite) uint64_t measurementValue;
 
 @end
 
@@ -207,6 +215,7 @@ typedef GPB_ENUM(Model_DeviceMeasurements_FieldNumber) {
   Model_DeviceMeasurements_FieldNumber_MeasurementArray = 2,
   Model_DeviceMeasurements_FieldNumber_EventDate = 3,
   Model_DeviceMeasurements_FieldNumber_MetadataArray = 4,
+  Model_DeviceMeasurements_FieldNumber_UpdateState = 5,
 };
 
 // Event message for device measurements.
@@ -225,6 +234,9 @@ typedef GPB_ENUM(Model_DeviceMeasurements_FieldNumber) {
 // |metadataArray| contains |Model_Metadata|
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray *metadataArray;
 @property(nonatomic, readonly) NSUInteger metadataArray_Count;
+
+@property(nonatomic, readwrite) BOOL hasUpdateState;
+@property(nonatomic, readwrite) BOOL updateState;
 
 @end
 
