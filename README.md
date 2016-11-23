@@ -5,11 +5,11 @@ This software development kit provides a scaffolding for creating iOS applicatio
 that interact with the SiteWhere platform. It connects to SiteWhere via MQTT and
 allows a device to register and send events.
 
-## Developer Setup
+# Developer Setup
 * Latest version of XCode installed
 * Please use [Cocoa Pods](http://cocoapods.org/) to import the SDK into your project.  If you're not familar with Cocoa Pods read the [getting start guide](http://guides.cocoapods.org/using/getting-started.html).  Cocoa Pods in very easy to use.
 
-## Quickstart
+# Quickstart
 Step 1. Clone this repository.
 
 Step 2. Using a shell, cd into the root directory of the project.
@@ -29,6 +29,11 @@ pod update
 Step 6. Import header file:
 ```
 #import <SiteWhereSDK/SiteWhereSDK.h>
+```
+
+# Protocol Buffers Generation
+```
+protoc --plugin=/usr/local/bin/protoc-gen-objc sitewhere.proto --objc_out="./"
 ```
 
 # Sample Application
